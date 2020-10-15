@@ -1,0 +1,120 @@
+import React from "react";
+import {
+  Text,
+  View,
+  Image,
+  Dimensions,
+  Animated,
+ 
+} from "react-native";
+import { Constants } from "expo";
+
+co
+
+  {
+    return ARTICLES.map((item, i) => {
+      if (i === this.state.currentIndex - 1) {
+        return (
+          <Animated.View
+            key={item.id}
+            style={this.swipeCardPosition.getLayout()}
+            {...this._panResponder.panHandlers}
+          >
+            <View
+              style={{
+                flex: 1,
+                position: "absolute",
+                width: SCREEN_WIDTH,
+                height: SCREEN_HEIGHT,
+                backgroundColor: "white"
+              }}
+            >
+              <View style={{ flex: 2, backgroundColor: "black" }}>
+                <Image
+                  source={item.uri}
+                  style={{
+                    flex: 1,
+                    width: null,
+                    height: null,
+                    resizeMode: "contain"
+                  }}
+                />
+              </View>
+              <View style={{ flex: 3, padding: 5 }}>
+                <Text>
+                 body
+                </Text>
+              </View>
+            </View>
+          </Animated.View>
+        );
+      }
+      if (i < this.state.currentIndex) {
+        return null;
+      }
+      return (
+        <Animated.View
+          key={item.id}
+          style={
+            this.state.currentIndex === i ? this.position.getLayout() : null
+          }
+          {...(this.state.currentIndex === i
+            ? { ...this._panResponder.panHandlers }
+            : null)}
+        >
+          <View
+            style={{
+              flex: 1,
+              position: "absolute",
+              width: SCREEN_WIDTH,
+              height: SCREEN_HEIGHT,
+              backgroundColor: "white"
+            }}
+          >
+            <View style={{ flex: 2, backgroundColor: "black" }}>
+              <Image
+                source={item.uri}
+                style={{
+                  flex: 1,
+                  width: null,
+                  height: null,
+                  resizeMode: "contain"
+                }}
+              />
+            </View>
+            <View style={{ flex: 3, padding: 5 }}>
+              <Text>
+                body
+              </Text>
+            </View>
+          </View>
+        </Animated.View>
+      );
+    }).reverse();
+  };
+
+  render() {
+    return (
+      <SafeAreaView
+        style={{
+          flex: 1,
+          backgroundColor: "rgba(0,0,0,0.5)"
+        }}
+      >
+        <View
+          style={{
+            flex: 1
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: "rgba(0,0,0,0.5)",
+              height: Platform.OS == "android" ? Constants.statusBarHeight : 0
+            }}
+          />
+          {this.fuckup()}
+        </View>
+      </SafeAreaView>
+    );
+  }
+}
