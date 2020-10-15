@@ -49,6 +49,5 @@ func articles1(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/articles/", articles)
 	http.HandleFunc("/articles/<id here>/", article1)
-	//http.HandleFunc("/save/", saveHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
